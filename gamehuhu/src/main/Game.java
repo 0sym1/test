@@ -16,7 +16,7 @@ public class Game extends Thread{
 
 
     public static final int TILES_DEFAULT_SIZE = 32;
-    public static final float SCALE = 1.5f;
+    public static final float SCALE = 1f;
     public static final int TILES_IN_WIDTH = 50;
     public static final int TILES_IN_HEIGHT = 30;
     public static final int TILES_SIZE = (int)(TILES_DEFAULT_SIZE * SCALE);
@@ -34,8 +34,9 @@ public class Game extends Thread{
     }
 
     public void initClasses(){
-        player = new Player(200,200);
         levelManager = new LevelManager(this);
+        player = new Player(200,200, (int)(98*2*SCALE),(int)(66*2*SCALE) );
+        player.loadLevelData(levelManager.getCurrentLevel().getLevelData());
     }
     public void gameLoop(){
         gameThread = new Thread(this);
